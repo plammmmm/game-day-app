@@ -3,7 +3,9 @@
 Hobby app for Phuc + a few friends. Research NFL matchups: sportsbook lines and team stat mismatches. Not sold. Research/viewing only — no bet placement.
 
 ## Current release
-**Phase 0 — scaffold.** Done when: Worker `/health` is deployed and the GitHub Pages site shows "Worker OK".
+**Phase 0 — scaffold.**
+- Step 1 (now): one-time odds pull to CSV with `scripts/pull-odds-once.ps1` to validate the API key and data shape. Manual, run by Phuc only — the one allowed exception to "all pulls go through the Worker."
+- Step 2: Worker `/health` deployed and the GitHub Pages site shows "Worker OK".
 
 ## Releases
 - **v1.1** — Today's NFL games (else next slate). Spread/total/ML per book. Opening vs current line. Best price. Refresh button (10-min cache).
