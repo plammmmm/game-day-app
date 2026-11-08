@@ -15,23 +15,24 @@ description: Layout, styling and data contracts for the static site in docs/. Us
 1. **Slate (v1.1):** one card per game — teams, kickoff (CT), and per row: book | spread | total | ML. Opener vs current with ▲/▼. Best price bolded. Refresh button.
 2. **Matchup (v1.2):** mirror chart (offense bars left, defense bars right, per unit pairing), mismatch badges, tendencies, form, ATS, injuries, weather.
 
-## Data contract — `/odds?sport=nfl`
+## Data contract — `/odds?sport=nfl` (also `docs/data/sample-odds.json`)
 ```json
 {
-  "fetchedAt": "ISO",
-  "paused": false,
-  "credits": { "used": 0, "remaining": 500 },
+  "fetchedAt": "ISO", "cached": true, "paused": false, "error": null,
+  "credits": { "used": 3, "remaining": 497, "at": "ISO" },
+  "openers": { "<gameId>": { "spreadHome": -2.5, "total": 46.5, "at": "ISO", "kickoff": "ISO" } },
   "games": [{
-    "id": "oddsApiEventId",
-    "kickoff": "ISO",
-    "home": "KC", "away": "BUF",
+    "id": "oddsApiEventId", "kickoff": "ISO", "live": false,
+    "home": "KC", "away": "BUF", "homeName": "Kansas City Chiefs", "awayName": "Buffalo Bills",
+    "consensus": { "spreadHome": -3, "total": 47.5 },
     "books": [{
-      "book": "draftkings",
-      "spread": { "home": -3.0, "homePrice": -110, "awayPrice": -110 },
+      "book": "draftkings", "us": true, "updated": "ISO",
+      "spread": { "home": -3, "homePrice": -110, "away": 3, "awayPrice": -110 },
       "total":  { "points": 47.5, "overPrice": -110, "underPrice": -110 },
       "ml":     { "home": -150, "away": 130 }
-    }],
-    "opener": { "spreadHome": -2.5, "total": 46.5, "at": "ISO" }
+    }]
   }]
 }
 ```
+- Consensus = median of US books, rounded to nearest 0.5.
+- Opener = first consensus seen before kickoff; never overwritten.

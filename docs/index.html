@@ -7,17 +7,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Game Day</h1>
-    <p class="sub">NFL lines and matchups</p>
+  <header class="top">
+    <div>
+      <h1>Game Day</h1>
+      <p class="sub">NFL · <span id="slate-label">…</span></p>
+    </div>
+    <button id="refresh" type="button">Refresh</button>
   </header>
   <main>
-    <section class="card">
-      <h2>Status</h2>
-      <p id="status">Checking Worker…</p>
-    </section>
+    <p id="status" class="status"></p>
+    <div class="controls">
+      <label><input type="checkbox" id="offshore"> Include offshore books</label>
+      <label id="live-toggle-wrap" hidden><input type="checkbox" id="show-live"> Show started games (<span id="live-count">0</span>)</label>
+    </div>
+    <p class="legend"><span class="best-swatch"></span> Best price · ▲ ▼ line move since open</p>
+    <div id="games"></div>
   </main>
+  <footer>For research only. Lines change fast; check the book before betting.</footer>
   <script src="config.js"></script>
+  <script src="slate.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

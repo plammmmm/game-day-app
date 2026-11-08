@@ -3,9 +3,11 @@
 Hobby app for Phuc + a few friends. Research NFL matchups: sportsbook lines and team stat mismatches. Not sold. Research/viewing only — no bet placement.
 
 ## Current release
-**Phase 0 — scaffold.**
-- Step 1 (now): one-time odds pull to CSV with `scripts/pull-odds-once.ps1` to validate the API key and data shape. Manual, run by Phuc only — the one allowed exception to "all pulls go through the Worker."
-- Step 2: Worker `/health` deployed and the GitHub Pages site shows "Worker OK".
+**v1.1 — slate board (built, awaiting Worker deploy).**
+- Done: Worker `/odds` (cache, budget guard, openers, daily cron), slate page with sample-data mode, tests.
+- Remaining: Phuc deploys Worker via dashboard, sets `docs/config.js`, makes repo public for Pages.
+- Books: 4 US books shown by default (DK, FD, MGM, BetRivers); offshore behind a toggle. Caesars/ESPN BET/Fanatics weren't in the 2026-11-08 pull.
+- `scripts/pull-odds-once.ps1` is a manual one-off validation tool — the only allowed pull outside the Worker.
 
 ## Releases
 - **v1.1** — Today's NFL games (else next slate). Spread/total/ML per book. Opening vs current line. Best price. Refresh button (10-min cache).
